@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>臺灣農業轉型路徑：從智慧精準技術到低碳永續經營之綜合分析</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5e3b;      /* 深森林綠 */
+            --primary-light: #eef5f0;    /* 淺綠背景 */
+            --accent-color: #8da86f;     /* 抹茶綠 */
+            --text-dark: #2d3748;        /* 深灰字體 */
+            --text-light: #718096;       /* 淺灰字體 */
+            --bg-white: #ffffff;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: #fcfdfc;
+            scroll-behavior: smooth;
+        }
+
+        /* 導覽列 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+
+        /* Hero 區塊 */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(44, 94, 59, 0.95) 0%, rgba(20, 50, 30, 0.9) 100%), url('assets/hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 140px 20px 80px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-section h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .abstract-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            text-align: left;
+            border-left: 4px solid var(--accent-color);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .abstract-box h3 {
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: white;
+        }
+
+        /* 通用區塊樣式 */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .bg-light-section {
+            background-color: var(--primary-light);
+            max-width: 100%;
+            width: 100%;
+        }
+        .bg-light-section .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 研究發現區 */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .finding-card {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .finding-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .finding-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .finding-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .finding-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 媒體與報告區 (PDF嵌入與播放器) */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .media-box {
+            background-color: var(--bg-white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .embed-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .audio-wrapper {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        audio {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background-color: #1e4228;
+            transform: translateY(-2px);
+        }
+
+        /* 團隊成員區 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--bg-white);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            border: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .member-img-box {
+            width: 100%;
+            height: 280px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .member-title {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-bio {
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            text-align: justify;
+            white-space: pre-line;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+        
+        /* 響應式微調 */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 1.8rem; }
+            nav ul { display: none; } /* 簡化行動端導覽 */
+            section { padding: 60px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i> 智慧農業研究成果
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#findings">研究發現</a></li>
+                    <li><a href="#report">研究報告</a></li>
+                    <li><a href="#presentation">簡報成果</a></li>
+                    <li><a href="#podcast">Podcast</a></li>
+                    <li><a href="#video">教學影片</a></li>
+                    <li><a href="#team">團隊成員</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首頁與摘要區 -->
+    <div id="home" class="hero-section">
+        <div class="hero-container">
+            <h1>臺灣農業轉型路徑：<br>從智慧精準技術到低碳永續經營之綜合分析</h1>
+            <div class="hero-subtitle">前瞻智慧生產與數位服務之雙軸轉型成果展示</div>
+            <div class="abstract-box">
+                <h3><i class="fa-solid fa-file-invoice"></i> 專題簡短摘要與介紹</h3>
+                <p>
+                    臺灣農業正面臨高齡化與糧食自給率偏低（32.28%）的結構性危機。本專題深入探討「智慧生產」與「數位服務」之雙軸轉型路徑，整合 AIoT 感測技術、多模態深度學習（如 XGBoost 與 YOLO11n 模型）及土壤微生物管理。
+                    透過實證研究，我們成功提升了作物生長預測的穩定性與草莓炭疽病分級的準確度，並探討了 2025 碳交易制度下的低碳精準農業發展方向，將傳統「看天吃飯」的農業模式，轉變為高效、低風險且具綠色競爭力的「數據驅動」智慧生態系。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 研究發現區 -->
+    <section id="findings">
+        <h2 class="section-title">核心研究發現</h2>
+        <div class="findings-grid">
+            <!-- 發現 1 -->
+            <div class="finding-card">
+                <div class="finding-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>1. 多模態 XGBoost 模型最佳</h3>
+                <p>在作物生長預測中，結合「視覺特徵」與「環境感測（氮磷鉀 NPK、溫濕度）」的多模態學習表現最為優異，小白菜株高預測之決定係數（R²）可達到 0.71。環境數據能有效修正跨批次的生長背景差異，顯著提升模型泛化與預測穩定性。</p>
+            </div>
+            <!-- 發現 2 -->
+            <div class="finding-card">
+                <div class="finding-icon"><i class="fa-solid fa-bug"></i></div>
+                <h3>2. 高精準輕量化病害識別</h3>
+                <p>針對草莓炭疽病自動化分級診斷，研究採用改良型增強版 YOLO11n 模型，準確率高達 95.5%，表現超越大型 YOLO11x 模型。該輕量化模型可完美部署於 NVIDIA Jetson Nano 等 5W 低功耗邊緣運算裝置，大幅降低小農巡田人力與設備門檻。</p>
+            </div>
+            <!-- 發現 3 -->
+            <div class="finding-card">
+                <div class="finding-icon"><i class="fa-solid fa-microscope"></i></div>
+                <h3>3. 土壤微生物抵銷化肥副作用</h3>
+                <p>技術實證顯示，施用芽孢桿菌（B. subtilis LNP-1）能顯著提升土壤微生物多樣性，在維持或穩定作物產量的同時，有效抵銷化學肥料對土地造成的劣化與副作用，為低碳精準施肥提供了強大的生物學支撐。</p>
+            </div>
+            <!-- 發現 4 -->
+            <div class="finding-card">
+                <div class="finding-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>4. 綠色定位正向影響購買意願</h3>
+                <p>在市場端與政策面研究中發現，消費者對於綠色農產品的「功能定位」與「情感定位」皆會顯著正向影響其購買意願。隨著臺灣預計於 2025 年啟動碳交易制度，建構完善的綠色競爭力與去中心化減碳足跡存證將是未來商機所在。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究報告區 -->
+    <div class="bg-light-section" id="report">
+        <section class="section-content">
+            <h2 class="section-title">完整研究報告</h2>
+            <div class="media-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+                <div class="media-box">
+                    <h3><i class="fa-solid fa-file-pdf"></i> 研究報告 PDF 線上瀏覽</h3>
+                    <div class="embed-container">
+                        <!-- 嵌入 PDF 檔 -->
+                        <iframe src="assets/report.pdf#toolbar=0" type="application/pdf"></iframe>
+                    </div>
+                    <a href="assets/report.pdf" download class="btn-download">
+                        <i class="fa-solid fa-cloud-download-alt"></i> 下載完整研究報告 PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 簡報成果區 -->
+    <section id="presentation">
+        <h2 class="section-title">簡報成果展示</h2>
+        <div class="media-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+            <div class="media-box">
+                <h3><i class="fa-solid fa-file-powerpoint"></i> 10頁精華簡報</h3>
+                <div class="embed-container">
+                    <!-- 嵌入簡報 PDF -->
+                    <iframe src="assets/slides.pdf#toolbar=0" type="application/pdf"></iframe>
+                </div>
+                <a href="assets/slides.pdf" download class="btn-download">
+                    <i class="fa-solid fa-cloud-download-alt"></i> 下載成果簡報 PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Podcast 播放區 -->
+    <div class="bg-light-section" id="podcast">
+        <section class="section-content">
+            <h2 class="section-title">Podcast 成果專區</h2>
+            <div class="media-grid" style="grid-template-columns: 1fr; max-width: 650px; margin: 0 auto;">
+                <div class="media-box">
+                    <h3><i class="fa-solid fa-microphone-lines"></i> 農業數位現場 - 線上收聽</h3>
+                    <div class="audio-wrapper">
+                        <p style="margin-bottom: 10px; color: var(--text-light); font-size: 0.9rem;">主持人：曉農 × 來賓：智博</p>
+                        <!-- 音檔播放器 -->
+                        <audio controls>
+                            <source src="assets/podcast.mp3" type="audio/mpeg">
+                            您的瀏覽器不支援音訊播放，請點擊下方按鈕下載。
+                        </audio>
+                    </div>
+                    <a href="assets/transcript.docx" download class="btn-download">
+                        <i class="fa-solid fa-file-word"></i> 下載 Podcast 完整逐字稿 (.docx)
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- VideoOverview 教學影片區 -->
+    <section id="video">
+        <h2 class="section-title">Video Overview 教學影片</h2>
+        <div class="media-grid" style="grid-template-columns: 1fr; max-width: 750px; margin: 0 auto;">
+            <div class="media-box">
+                <h3><i class="fa-solid fa-video"></i> 專題導覽與系統教學影片</h3>
+                <div class="video-container">
+                    <!-- 影片播放器 -->
+                    <video controls poster="assets/video-poster.jpg">
+                        <source src="assets/video.mp4" type="video/mp4">
+                        您的瀏覽器不支援影片播放。
+                    </video>
+                </div>
+                <p style="color: var(--text-light); font-size: 0.88rem; text-align: center;">點擊播放按鈕即可觀看團隊的研究成果系統操作與核心技術展示短片。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 團隊成員介紹區 -->
+    <div class="bg-light-section" id="team">
+        <section class="section-content">
+            <h2 class="section-title">團隊成員介紹</h2>
+            <div class="team-grid">
+                
+                <!-- 成員 1 -->
+                <div class="team-card">
+                    <div class="member-img-box">
+                        <!-- 成員照片 -->
+                        <img src="assets/member1.jpg" alt="成員 1 照片" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">智慧農業研究員</div>
+                        <div class="member-title">技術研發 / AIoT 整合</div>
+                        <div class="member-bio">大家好，我是致力於臺灣農業數位轉型與永續發展的研究者。面對臺灣農業人口高齡化（2018年65歲以上農民占18.3%）與糧食自給率僅32.28%的挑戰，我的研究目標是透過「智慧生產」與「數位服務」的雙軸轉型，為產業尋找新出路。
+
+在技術實證方面，我專精於AIoT技術與多模態學習的整合應用。我曾開發針對小白菜株高的預測模型，透過融合影像特徵與環境感測數據，利用XGBoost算法達到平均決定係數（R²）0.71的穩定表現。此外，我也參與研發「StrawberryTalkv2」系統，利用YOLO深度學習模型，能以95.5%的準確率對草莓炭疽病進行自動化分級診診斷，顯著降低人力巡田成本。
+
+除了數位技術，我也關注環境韌性。透過土壤微生物分析，我證實施用芽孢桿菌（LNP-1）能有效提升微生物多樣性並抵銷化肥副作用，這不僅能穩定作物產量，更能支撐臺灣邁向2050淨零排放及2025年啟動的碳交易制度。我期許能將農業從傳統的「看天吃飯」轉變為「數據驅動」，建構一個高效、低風險且具備綠色競爭力的智慧農業生態系。</div>
+                    </div>
+                </div>
+
+                <!-- 成員 2 -->
+                <div class="team-card">
+                    <div class="member-img-box">
+                        <!-- 成員照片 -->
+                        <img src="assets/member2.jpg" alt="李祥宇 照片" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400'">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">李祥宇</div>
+                        <div class="member-title">行銷管理 / 數據分析</div>
+                        <div class="member-bio">你好，我是李祥宇。我是一位具備跨領域思維、實務經驗與數據敏銳度的專業人才。在學門深耕上，我專注於農業行銷與成本財務管理，擅長運用統計學與數據分析工具，將繁雜的數據轉化為實質的市場洞察。
+
+在過去的職涯中，我累積了六年的商學專業訓練，以及三年的全球物流與供應鏈管理實務經驗，這不僅培養出我嚴謹的成本控制意識，更奠定了高效的跨部門協調與解決問題能力。
+
+我熱衷於與時俱進，目前正積極投入數位行銷、社群影音經營與AI工具的實務應用。我習慣用敏銳的市場嗅覺捕捉當前趨勢，並靈活運用多元科技來提升工作效能。
+
+我具備紮實的商業底蘊、全球物流視野與新興農業行銷的整合能力。期待未來能發揮這份跨界的「數據力」與「行銷力」，為貴團隊創造實質的價值與創新突破。謝謝！</div>
+                    </div>
+                </div>
+
+                <!-- 成員 3 -->
+                <div class="team-card">
+                    <div class="member-img-box">
+                        <!-- 成員照片 -->
+                        <img src="assets/member3.jpg" alt="成員 3 照片" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400'">
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">科技研發專員</div>
+                        <div class="member-title">硬體架構 / 邊緣運算部署</div>
+                        <div class="member-bio">大家好，我是一個對科技與知識充滿好奇心的人，喜歡深入研究事物背後的原理，而不只是停留在表面的使用方式。平時特別關注電腦硬體、人工智慧、軟體開發以及各種新興科技，遇到問題時習慣主動查找資料、分析原因，並透過實際操作驗證自己的想法。
+
+我喜歡探索各種技術領域，從電腦效能優化、遊戲硬體配置，到本地端 AI 助理、語音辨識系統等，都抱持高度興趣。目前也持續學習如何打造能夠在個人電腦上運行 的 AI 系統，希望透過技術提升工作與生活效率。
+
+除了科技相關主題外，我也喜歡思考社會現象、哲學觀念以及人性的各種面向，經常從不同角度觀察事物，嘗試理解問題背後更深層的原因。我認為學習不應只是為了獲得答案，更重要的是培養獨立思考與解決問題的能力。
+
+我個性沉穩、好奇心強，面對未知事物時願意主動探索與嘗試。未來希望持續累積知識與經驗，將興趣轉化為實際能力，在不斷學習與成長的過程中，創造更多可能性。畢竟人類最大的特色之一，就是明知道懂得不夠，還是不停追著答案跑。這點倒是挺值得佩服的。</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2026 智慧農業專題研究成果小組. All Rights Reserved.</p>
+        <p>本網站由 GitHub Pages 託管提供線上展示</p>
+    </footer>
+
+</body>
+</html>
